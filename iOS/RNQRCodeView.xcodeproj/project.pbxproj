@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8922CAFE1C0663C6003D1ED6 /* RNQRCodeViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8922CAFD1C0663C6003D1ED6 /* RNQRCodeViewManager.m */; settings = {ASSET_TAGS = (); }; };
 		89B2834B1C05398D0085721C /* RNQRCodeView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 89B2834A1C05398D0085721C /* RNQRCodeView.h */; };
 		89B2834D1C05398D0085721C /* RNQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B2834C1C05398D0085721C /* RNQRCodeView.m */; };
 /* End PBXBuildFile section */
@@ -25,6 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8922CAFC1C0663C6003D1ED6 /* RNQRCodeViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNQRCodeViewManager.h; sourceTree = "<group>"; };
+		8922CAFD1C0663C6003D1ED6 /* RNQRCodeViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNQRCodeViewManager.m; sourceTree = "<group>"; };
 		89B283471C05398D0085721C /* libRNQRCodeView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNQRCodeView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B2834A1C05398D0085721C /* RNQRCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNQRCodeView.h; sourceTree = "<group>"; };
 		89B2834C1C05398D0085721C /* RNQRCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNQRCodeView.m; sourceTree = "<group>"; };
@@ -62,6 +65,8 @@
 			children = (
 				89B2834A1C05398D0085721C /* RNQRCodeView.h */,
 				89B2834C1C05398D0085721C /* RNQRCodeView.m */,
+				8922CAFC1C0663C6003D1ED6 /* RNQRCodeViewManager.h */,
+				8922CAFD1C0663C6003D1ED6 /* RNQRCodeViewManager.m */,
 			);
 			path = RNQRCodeView;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8922CAFE1C0663C6003D1ED6 /* RNQRCodeViewManager.m in Sources */,
 				89B2834D1C05398D0085721C /* RNQRCodeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,7 +216,7 @@
 		89B283511C05398D0085721C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../react-native/React/**";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native/React/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -220,7 +226,7 @@
 		89B283521C05398D0085721C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../react-native/React/**";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native/React/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

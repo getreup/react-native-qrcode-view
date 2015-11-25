@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface RNQRCodeView : NSObject
+#import  "RCTView.h"
 
+@interface RNQRCodeView : RCTView
++(instancetype)newWithData:(NSArray*)data;
++(instancetype)newWithData:(NSArray*)data foregroundColor:(UIColor*)foregroundColor backgroundColor:(UIColor*)backgroundColor;
 @end
