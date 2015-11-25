@@ -1,6 +1,6 @@
 {
   "name": "react-native-qrcode-view",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "This view takes qrcode data and displays it in a simple, optimized view.",
   "main": "index.js",
   "scripts": {
