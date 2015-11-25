@@ -1,0 +1,102 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/kelseyregan/BitBucket/RNQRCodeView',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/kelseyregan/.npm/react-native-qrcode-view/0.1.0/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/kelseyregan/.npm/react-native-qrcode-view/0.1.0/package.tgz',
+9 verbose tar pack   '/Users/kelseyregan/BitBucket/RNQRCodeView' ]
+10 verbose tarball /Users/kelseyregan/.npm/react-native-qrcode-view/0.1.0/package.tgz
+11 verbose folder /Users/kelseyregan/BitBucket/RNQRCodeView
+12 info prepublish react-native-qrcode-view@0.1.0
+13 verbose addLocalTarball adding from inside cache /Users/kelseyregan/.npm/react-native-qrcode-view/0.1.0/package.tgz
+14 silly cache afterAdd react-native-qrcode-view@0.1.0
+15 verbose afterAdd /Users/kelseyregan/.npm/react-native-qrcode-view/0.1.0/package/package.json not in flight; writing
+16 verbose afterAdd /Users/kelseyregan/.npm/react-native-qrcode-view/0.1.0/package/package.json written
+17 silly publish { name: 'react-native-qrcode-view',
+17 silly publish   version: '0.1.0',
+17 silly publish   description: 'This view takes qrcode data and displays it in a simple, optimized view.',
+17 silly publish   main: 'index.js',
+17 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+https://github.com/KelseyRegan/react-native-qrcode-view.git' },
+17 silly publish   keywords:
+17 silly publish    [ 'react',
+17 silly publish      'native',
+17 silly publish      'qrcode',
+17 silly publish      'rn',
+17 silly publish      'ios',
+17 silly publish      'android',
+17 silly publish      'view',
+17 silly publish      'react-component' ],
+17 silly publish   author: { name: 'Kelsey Regan' },
+17 silly publish   license: 'ISC',
+17 silly publish   bugs: { url: 'https://github.com/KelseyRegan/react-native-qrcode-view/issues' },
+17 silly publish   homepage: 'https://github.com/KelseyRegan/react-native-qrcode-view#readme',
+17 silly publish   dependencies: { 'react-native': '^0.15.0' },
+17 silly publish   readme: '# react-native-qrcode-view\nThis view takes qrcode data and displays it in a simple, optimized view.\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: 'd0ebfe5e2ba2c841f533f560eaa03fdeef0b384e',
+17 silly publish   _id: 'react-native-qrcode-view@0.1.0',
+17 silly publish   _shasum: '1625092419b19a29ac450a033f6951355a41aff9',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name react-native-qrcode-view
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/react-native-qrcode-view
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /Users/kelseyregan/.npm/react-native-qrcode-view/0.1.0/package.tgz
+25 verbose request uri https://registry.npmjs.org/react-native-qrcode-view
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 2:44:37 PM
+28 verbose request using bearer token for auth
+29 verbose request id 928cf8ac4dacb5c0
+30 http request PUT https://registry.npmjs.org/react-native-qrcode-view
+31 http 403 https://registry.npmjs.org/react-native-qrcode-view
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=60',
+32 verbose headers   'content-length': '95',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Wed, 25 Nov 2015 22:44:37 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-lax1425-LAX',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1448491477.857978,VS0,VE102' }
+33 verbose request invalidating /Users/kelseyregan/.npm/registry.npmjs.org/react-native-qrcode-view on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: "You cannot publish over the previously published version 0.1.0." : react-native-qrcode-view
+35 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+35 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+35 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+35 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+35 verbose stack     at emitTwo (events.js:87:13)
+35 verbose stack     at Request.emit (events.js:172:7)
+35 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1063:14)
+35 verbose stack     at emitOne (events.js:82:20)
+35 verbose stack     at Request.emit (events.js:169:7)
+35 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+36 verbose statusCode 403
+37 verbose pkgid react-native-qrcode-view
+38 verbose cwd /Users/kelseyregan/BitBucket/RNQRCodeView
+39 error Darwin 15.0.0
+40 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+41 error node v4.2.1
+42 error npm  v2.14.7
+43 error code E403
+44 error "You cannot publish over the previously published version 0.1.0." : react-native-qrcode-view
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]
