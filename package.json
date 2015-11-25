@@ -27,6 +27,6 @@
   },
   "homepage": "https://github.com/KelseyRegan/react-native-qrcode-view#readme",
   "dependencies": {
-    "react-native": "^0.15.0"
+    "react-native": "^0.12.0",
   }
 }
