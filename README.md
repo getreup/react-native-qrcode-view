@@ -23,10 +23,6 @@ All that is needed is installing through npm:
 
 ### Usage
 
-You can see the specific api usage [here](https://github.com/BBB/react-native-card.io-example/blob/master/src/containers/App.jsx)
-
-**Please don't forget to respect [card.io](https://www.card.io/) [open source contributors](https://github.com/card-io/card.io-iOS-SDK#with-or-without-cocoapods) by putting the acknowledgments in your app**
-
 ```JSX
 var React = require('react-native');
 
