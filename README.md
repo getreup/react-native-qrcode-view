@@ -5,8 +5,8 @@ A React Native View to display QR Codes in.
 </p>
 
 <p align="center">
-<a href="https://badge.fury.io/js/react-native-qrcode-view"><img src="https://badge.fury.io/js/react-native-qrcode-view.svg" alt="npm version" height="18"></a>
-<a href="https://npmjs.org/package/react-native-card.io"><img alt="Downloads" src="http://img.shields.io/npm/dm/react-native-card.io.svg?1.2.0"></a>
+<a href="https://badge.fury.io/js/react-native-qrcode-view"><img src="https://badge.fury.io/js/react-native-qrcode-view.svg" alt="npm version" height="18"></a><br />
+<a href="https://nodei.co/npm/react-native-qrcode-view/"><img src="https://nodei.co/npm/react-native-qrcode-view.png"></a>
 </p>
 
 
