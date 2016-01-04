@@ -1,9 +1,3 @@
-# react-native-qrcode-view
-This view takes qrcode data and displays it in a simple, optimized view.
-
-
-
-
 <h2 align="center">react-native-qrcode-view</h2>
 
 <p align="center">
