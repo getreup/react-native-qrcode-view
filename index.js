@@ -8,8 +8,6 @@ var {
   View,
 } = React;
 
-// var RNQRCodeView = require('react-native-qrcode-view');
-
 var QRCodeView = React.createClass(
 {
   getDefaultProps : function()
@@ -50,6 +48,7 @@ var QRCodeView = React.createClass(
     var negCol = this.props.negativeColor;
 
     var blockDim = Math.floor(this.props.dimension/matrix.length);
+    var startIndex = -1;
     var qrRendered = <View style={[styles.container]}>
       {
         matrix.map(function(row, index)
@@ -57,9 +56,26 @@ var QRCodeView = React.createClass(
           return (
             <View key={index} style={[styles.row, {height:blockDim}]}>
               {
+
                 row.map(function(value, column)
                 {
-                  return (<View key={index + "-" + column} style={[styles.block,{width:blockDim, height:blockDim, backgroundColor:value == '1' ? posCol : negCol}]} />)
+                  if( startIndex < 0 ) startIndex = column;
+
+                  // check if the next column is the same
+                  var isLastColumn = column >= row.length-1;
+                  var nextColumnValueSame = !isLastColumn && (value == row[column+1]);
+                  if( nextColumnValueSame )
+                  {
+                    return null; // dont do anything
+                  }
+                  else
+                  {
+                    var thisStartIndex = startIndex;
+                    var numBlocks = column - startIndex + 1;
+                    startIndex = -1;
+                    return (<View key={index + "-" + column} style={[styles.block,{width:blockDim*numBlocks, height:blockDim, backgroundColor:value == '1' ? posCol : negCol}]} />)
+                  }
+
                 })
               }
             </View>
