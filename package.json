@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/KelseyRegan/react-native-qrcode-view#readme",
   "dependencies": {
-    "javascript-qrcode": "^1.0.7"
+    "javascript-qrcode": "^1.0.7",
+    "react-native": "^0.28.0"
   },
   "peerDependencies": {
     "react-native": "*"

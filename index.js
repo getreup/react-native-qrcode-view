@@ -1,103 +1,73 @@
-var React = require('react-native');
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import JSQR from 'javascript-qrcode';
 
-var JSQR = require('javascript-qrcode');
+export default class QRCodeView extends React.Component {
+  static defaultProps = {
+    data : "",
+    positiveColor : 'black',
+    negativeColor : 'white',
+    dimension : 200,
+  };
 
-var {
-  AppRegistry,
-  StyleSheet,
-  View,
-} = React;
+  constructor(props) {
+    super(props);
+  }
 
-var QRCodeView = React.createClass(
-{
-  getDefaultProps : function()
-  {
-    return {
-      data : "",
-      positiveColor : 'black',
-      negativeColor : 'white',
-      dimension : 200,
-    }
-  },
-
-  getInitialState : function()
-  {
-    return {
-      qrRendered : [[]],
-    }
-  },
-
-  componentDidMount : function()
-  {
-    if( this.props.data.length > 0 )
-    {
+  componentDidMount() {
+    if (this.props.data.length > 0) {
       this.setData(this.props.data);
     }
-  },
+  }
 
-  _data : "",
-  setData : function(newData)
-  {
-    if( newData == this._data ) return;
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.data !== this.props.data) return true;
+    if (nextProps.positiveColor !== this.props.positiveColor) return true;
+    if (nextProps.negativeColor !== this.props.negativeColor) return true;
+    if (nextProps.dimension !== this.props.dimension) return true;
 
-    this._data = newData;
+    return false;
+  }
 
-    var qrcode = new JSQR.QrCode(this._data);
-    var matrix = qrcode.getData();
-    var posCol = this.props.positiveColor;
-    var negCol = this.props.negativeColor;
+  render () {
+    let qrcode = new JSQR.QrCode(this.props.data);
+    let matrix = qrcode.getData();
+    let posCol = this.props.positiveColor;
+    let negCol = this.props.negativeColor;
 
-    var blockDim = Math.floor(this.props.dimension/matrix.length);
-    var startIndex = -1;
-    var qrRendered = <View style={[styles.container]}>
-      {
-        matrix.map(function(row, index)
-        {
-          return (
-            <View key={index} style={[styles.row, {height:blockDim}]}>
-              {
-
-                row.map(function(value, column)
-                {
-                  if( startIndex < 0 ) startIndex = column;
-
-                  // check if the next column is the same
-                  var isLastColumn = column >= row.length-1;
-                  var nextColumnValueSame = !isLastColumn && (value == row[column+1]);
-                  if( nextColumnValueSame )
-                  {
-                    return null; // dont do anything
-                  }
-                  else
-                  {
-                    var thisStartIndex = startIndex;
-                    var numBlocks = column - startIndex + 1;
-                    startIndex = -1;
-                    return (<View key={index + "-" + column} style={[styles.block,{width:blockDim*numBlocks, height:blockDim, backgroundColor:value == '1' ? posCol : negCol}]} />)
-                  }
-
-                })
-              }
-            </View>
-          )
-        })
-      }
-    </View>;
-
-    this.setState({qrRendered:qrRendered});
-  },
-
-  render: function()
-  {
+    let blockDim = Math.floor(this.props.dimension / matrix.length);
+    let startIndex = -1;
     return (
       <View ref='container' style={this.props.style}>
-        {this.state.qrRendered}
+        <View style={[styles.container]}>
+          {matrix.map((row, index) => <View key={index} style={[styles.row, {height: blockDim}]}>
+            {row.map((value, column) => {
+              if (startIndex < 0) startIndex = column;
+
+              // check if the next column is the same
+              let isLastColumn = column >= row.length - 1;
+              let nextColumnValueSame = !isLastColumn && (value == row[column + 1]);
+
+              if (nextColumnValueSame) {
+                return null; // dont do anything
+              }
+
+              var thisStartIndex = startIndex;
+              var numBlocks = column - startIndex + 1;
+              startIndex = -1;
+              return <View key={index + "-" + column} style={[styles.block, {
+                width: blockDim * numBlocks,
+                height: blockDim,
+                backgroundColor: value == '1' ? posCol : negCol
+              }]}/>;
+            })}</View>)}
+        </View>
       </View>
     );
   }
-});
+}
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container:{
     flex: 1,
     alignItems: 'stretch',
@@ -119,5 +89,3 @@ var styles = StyleSheet.create({
     position: 'absolute',
   },
 });
-
-module.exports = QRCodeView;
