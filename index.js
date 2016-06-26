@@ -14,12 +14,6 @@ export default class QRCodeView extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    if (this.props.data.length > 0) {
-      this.setData(this.props.data);
-    }
-  }
-
   shouldComponentUpdate(nextProps) {
     if (nextProps.data !== this.props.data) return true;
     if (nextProps.positiveColor !== this.props.positiveColor) return true;
