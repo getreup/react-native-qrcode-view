@@ -13,9 +13,13 @@ export default class QRCodeView extends React.Component {
   constructor(props) {
     super(props);
 
-    if (props.data) {
-      this.dataUpdated();
-    }
+    this.state = {
+      qrElements: []
+    };
+  }
+
+  componentWillMount() {
+    this.dataUpdated();
   }
 
   dataUpdated() {
@@ -46,7 +50,7 @@ export default class QRCodeView extends React.Component {
               width: blockDim * numBlocks,
               height: blockDim,
               backgroundColor: value == '1' ? posCol : negCol
-            }]}/>;
+            }]}/>
           })}
       </View>
     );
@@ -68,7 +72,7 @@ export default class QRCodeView extends React.Component {
     return (
       <View ref='container' style={this.props.style}>
         <View style={[styles.container]}>
-          {this.state.qrElements};
+          {this.state.qrElements}
         </View>
       </View>
     );
