@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {InteractionManager, StyleSheet, View} from 'react-native';
 import JSQR from 'javascript-qrcode';
 
 export default class QRCodeView extends React.Component {
@@ -12,18 +12,13 @@ export default class QRCodeView extends React.Component {
 
   constructor(props) {
     super(props);
+
+    if (props.data) {
+      dataUpdated();
+    }
   }
 
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.data !== this.props.data) return true;
-    if (nextProps.positiveColor !== this.props.positiveColor) return true;
-    if (nextProps.negativeColor !== this.props.negativeColor) return true;
-    if (nextProps.dimension !== this.props.dimension) return true;
-
-    return false;
-  }
-
-  render () {
+  dataUpdated() {
     let qrcode = new JSQR.QrCode(this.props.data);
     let matrix = qrcode.getData();
     let posCol = this.props.positiveColor;
@@ -31,30 +26,49 @@ export default class QRCodeView extends React.Component {
 
     let blockDim = Math.floor(this.props.dimension / matrix.length);
     let startIndex = -1;
+    let qrElements = matrix.map((row, index) =>
+      <View key={index} style={[styles.row, {height: blockDim}]}>
+          {row.map((value, column) => {
+            if (startIndex < 0) startIndex = column;
+
+            // check if the next column is the same
+            let isLastColumn = column >= row.length - 1;
+            let nextColumnValueSame = !isLastColumn && (value == row[column + 1]);
+
+            if (nextColumnValueSame) {
+              return null; // don't do anything
+            }
+
+            let numBlocks = column - startIndex + 1;
+            startIndex = -1;
+
+            return <View key={index + "-" + column} style={[styles.block, {
+              width: blockDim * numBlocks,
+              height: blockDim,
+              backgroundColor: value == '1' ? posCol : negCol
+            }]}/>;
+          })}
+      </View>
+    );
+
+    this.setState({qrElements: qrElements});
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.data !== this.props.data) return true;
+    if (nextProps.positiveColor !== this.props.positiveColor) return true;
+    if (nextProps.negativeColor !== this.props.negativeColor) return true;
+    if (nextProps.dimension !== this.props.dimension) return true;
+    if (nextState.qrElements !== this.state.qrElements) return true;
+
+    return false;
+  }
+
+  render () {
     return (
       <View ref='container' style={this.props.style}>
         <View style={[styles.container]}>
-          {matrix.map((row, index) => <View key={index} style={[styles.row, {height: blockDim}]}>
-            {row.map((value, column) => {
-              if (startIndex < 0) startIndex = column;
-
-              // check if the next column is the same
-              let isLastColumn = column >= row.length - 1;
-              let nextColumnValueSame = !isLastColumn && (value == row[column + 1]);
-
-              if (nextColumnValueSame) {
-                return null; // dont do anything
-              }
-
-              var thisStartIndex = startIndex;
-              var numBlocks = column - startIndex + 1;
-              startIndex = -1;
-              return <View key={index + "-" + column} style={[styles.block, {
-                width: blockDim * numBlocks,
-                height: blockDim,
-                backgroundColor: value == '1' ? posCol : negCol
-              }]}/>;
-            })}</View>)}
+          {this.state.qrElements};
         </View>
       </View>
     );
