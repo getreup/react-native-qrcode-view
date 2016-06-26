@@ -18,12 +18,18 @@ export default class QRCodeView extends React.Component {
     };
   }
 
-  componentWillMount() {
-    this.dataUpdated();
+  componentDidMount() {
+    this.dataUpdated(this.props.data);
   }
 
-  dataUpdated() {
-    let qrcode = new JSQR.QrCode(this.props.data);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data !== this.props.data) {
+      this.dataUpdated(nextProps.data);
+    }
+  }
+
+  dataUpdated(data) {
+    let qrcode = new JSQR.QrCode(data);
     let matrix = qrcode.getData();
     let posCol = this.props.positiveColor;
     let negCol = this.props.negativeColor;
@@ -59,7 +65,6 @@ export default class QRCodeView extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.data !== this.props.data) return true;
     if (nextProps.positiveColor !== this.props.positiveColor) return true;
     if (nextProps.negativeColor !== this.props.negativeColor) return true;
     if (nextProps.dimension !== this.props.dimension) return true;
